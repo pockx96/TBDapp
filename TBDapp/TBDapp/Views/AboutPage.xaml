@@ -44,7 +44,7 @@
                 <Button Margin="0,10,0,0" Text="Contactanos"
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
-                        TextColor="White" />
+                        TextColor="white" />
             </StackLayout>
         </ScrollView>
     </Grid>
