@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TBDapp.ViewModels"
+             x:Class="TBDapp.Views.presupuestopage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:PresupuestoViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Finalisar"  />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <vm:PresupuestoViewModel x:Key="Collectiondinosaurs"></vm:PresupuestoViewModel>
+    </ContentPage.Resources>
+
+    <Grid>
+        <StackLayout>
+            <Entry TextColor="Black" Placeholder="Buscar" BackgroundColor="Gray"></Entry>
+            
+            <ListView BackgroundColor="Gray"  ItemsSource="{Binding Source={StaticResource}}"> </ListView>
+
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>
