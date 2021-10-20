@@ -18,7 +18,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Image Grid.Row="0" Source="logo_user.png" HeightRequest="100" WidthRequest="100" Margin="0,120,0,30"></Image>
+                <Image Grid.Row="0" Source="logo_user.png" HeightRequest="100" WidthRequest="100" Margin="0,120,0,30"  ></Image>
 
                 <StackLayout Grid.Row="1" Padding="20,30">
                     <Entry Placeholder="Usuario" PlaceholderColor="White" />
