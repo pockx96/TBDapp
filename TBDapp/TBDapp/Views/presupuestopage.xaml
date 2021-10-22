@@ -19,7 +19,8 @@
         <StackLayout>
             <Entry TextColor="Black" Placeholder="Buscar" BackgroundColor="Gray"></Entry>
             
-            <ListView BackgroundColor="Gray"  ItemsSource="{Binding Source={StaticResource}}"> </ListView>
+            <ListView BackgroundColor="Gray"  x:Name="lista_materiales"> </ListView>
+            <Button x:Name="btn"/>
 
         </StackLayout>
     </Grid>

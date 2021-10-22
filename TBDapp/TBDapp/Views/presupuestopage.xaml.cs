@@ -12,10 +12,14 @@ namespace TBDapp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class presupuestopage : ContentPage
     {
+
         
         public presupuestopage()
         {
             InitializeComponent();
+
+            
+   
             
         }
     }
