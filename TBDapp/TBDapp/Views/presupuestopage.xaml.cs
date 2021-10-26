@@ -17,7 +17,7 @@ namespace TBDapp.Views
             "tinner","bondo","primer","pintura bicapa","masking tape"
         };
 
-        
+        // hola mundo //
         
 
         public presupuestopage()
