@@ -148,4 +148,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\cliente_logo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\loggin_wp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\about_wp.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\facebook.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\whatsapp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\instagram.png" />
+  </ItemGroup>
 </Project>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TBDapp.ViewModels"
+             x:Class="TBDapp.Views.presupuestopage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:PresupuestoViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Finalisar"  />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="Black" ></Setter>
+            <Setter Property="Background" Value="gray"></Setter>
+        </Style>
+    </ContentPage.Resources>
+
+
+    <Grid>
+        <StackLayout>
+            <Entry x:Name="buscador_materiales" Placeholder="Buscar" VerticalOptions="FillAndExpand"></Entry>
+            
+            <ListView   x:Name="lista_materiales" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"> </ListView>
+            <Button x:Name="bt_prueba" />
+
+
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>
