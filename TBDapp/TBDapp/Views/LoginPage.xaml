@@ -21,9 +21,13 @@
                 <Image Grid.Row="0" Source="logo_user.png" HeightRequest="100" WidthRequest="100" Margin="0,120,0,30"  ></Image>
 
                 <StackLayout Grid.Row="1" Padding="20,30">
-                    <Entry Placeholder="Usuario" PlaceholderColor="White" />
-                    <Entry Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True"/>
+                    <Entry Placeholder="Usuario" PlaceholderColor="White" x:Name="entry_user" />
+                    <Entry Placeholder="Contraseña" PlaceholderColor="White" IsPassword="True" x:Name="entry_pass"/>
                     <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+                    <Button VerticalOptions="Center" Text="Test" x:Name="btntest"/>
+                    <Label x:Name="lbluser"/>
+                    <Label x:Name="lblpass" />
+
                 </StackLayout>
             </Grid>
             

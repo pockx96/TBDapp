@@ -10,17 +10,21 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Finalisar"  />
     </ContentPage.ToolbarItems>
-
     <ContentPage.Resources>
-        <vm:PresupuestoViewModel x:Key="Collectiondinosaurs"></vm:PresupuestoViewModel>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="Black" ></Setter>
+            <Setter Property="Background" Value="gray"></Setter>
+        </Style>
     </ContentPage.Resources>
+
 
     <Grid>
         <StackLayout>
-            <Entry TextColor="Black" Placeholder="Buscar" BackgroundColor="Gray"></Entry>
+            <Entry x:Name="buscador_materiales" Placeholder="Buscar" VerticalOptions="FillAndExpand"></Entry>
             
-            <ListView BackgroundColor="Gray"  x:Name="lista_materiales"> </ListView>
-            <Button x:Name="btn"/>
+            <ListView   x:Name="lista_materiales" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"> </ListView>
+            <Button x:Name="bt_prueba" />
+
 
         </StackLayout>
     </Grid>
