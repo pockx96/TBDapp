@@ -84,9 +84,13 @@
     <FlyoutItem Title="Clientes" Icon="cliente_logo.png">
         <ShellContent Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </FlyoutItem>
+    <FlyoutItem Title="Agregar materiales" Icon="icon_about.png">
+        <ShellContent Route="MaterialesPage" ContentTemplate="{DataTemplate local:MaterialesPage}" />
+    </FlyoutItem>
     <FlyoutItem Title="Acerca de" Icon="icon_about.png">
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>
+  
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
     <MenuItem Text="Salir" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">

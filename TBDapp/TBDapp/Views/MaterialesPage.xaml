@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TBDapp.Views.MaterialesPage"
+             Title="Agrega un nuevo material">
+             
+    <ContentPage.Content>
+
+        <Grid>
+            <StackLayout Margin="20,50,20,30">
+                <Entry x:Name="Entry_nombre" Placeholder="Nombre del material" BackgroundColor="Gray"/>
+                <Entry x:Name="Entry_precio" Placeholder="Precio actual" BackgroundColor="Gray"/>
+                <Button x:Name="Btn_agregar_material" Text="Agregar" Clicked="Btn_agregar_material_Clicked" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
