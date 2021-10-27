@@ -11,15 +11,34 @@
         <ToolbarItem Text="Finalisar"  />
     </ContentPage.ToolbarItems>
 
-    <ContentPage.Resources>
-        <vm:PresupuestoViewModel x:Key="Collectiondinosaurs"></vm:PresupuestoViewModel>
-    </ContentPage.Resources>
+    
 
     <Grid>
         <StackLayout>
-            <Entry TextColor="Black" Placeholder="Buscar" BackgroundColor="Gray"></Entry>
-            
-            <ListView BackgroundColor="Gray"  ItemsSource="{Binding Source={StaticResource}}"> </ListView>
+            <ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding id_material}" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding nombre_material}" Grid.Row="0" Grid.Column="1" />
+                                <Label Text="{Binding precio_material}" Grid.Row="0" Grid.Column="2"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackLayout>
     </Grid>
