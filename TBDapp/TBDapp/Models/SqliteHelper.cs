@@ -15,6 +15,7 @@ namespace TBDapp.Models
             bd = new SQLiteAsyncConnection(bdpath);
             bd.CreateTableAsync<Materiales>().Wait();
             bd.CreateTableAsync<Clientes>().Wait();
+            bd.CreateTableAsync<Usuarios>().Wait();
 
         }
 
@@ -80,7 +81,23 @@ namespace TBDapp.Models
             return bd.Table<Clientes>().ToListAsync();
         }
 
+        public Task<int> SaveUsuarios(Usuarios user)
+        {
+            if (user.id_usuario==0)
+            {
+                return bd.InsertAsync(user);
+            }
+            else
+            {
+                return null;
+            }
 
+        }
+
+        public Task<List<Usuarios>> GetUsuarios()
+        {
+            return bd.Table<Usuarios>().ToListAsync();
+        }
 
     }
 }
