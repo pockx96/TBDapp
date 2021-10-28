@@ -7,15 +7,16 @@
     <ContentPage.Content>
 
         
-       <StackLayout >
-            <StackLayout x:Name="SavematerialesLayout" IsVisible="false">
-                <Entry x:Name="Entry_nombre" Placeholder="Nombre del material" BackgroundColor="Gray"/>
-                <Entry x:Name="Entry_precio" Placeholder="Precio actual" BackgroundColor="Gray"/>
-                <Button x:Name="Btn_agregar_material" Text="Agregar" Clicked="Btn_agregar_material_Clicked" />
+       <StackLayout Margin="10,20,10,20" >
+            <StackLayout x:Name="SavematerialesLayout" IsVisible="false" Margin="0,0,0,20">
+                <Entry x:Name="Entry_nombre" Placeholder="Nombre del material" BackgroundColor="#747B85" Opacity=".8" />
+                <Entry x:Name="Entry_precio" Placeholder="Precio actual" BackgroundColor="#747B85" Opacity=".8"/>
+                <Button x:Name="Btn_agregar_material" Text="Agregar" Clicked="Btn_agregar_material_Clicked" Margin="0,20,0,0" BorderRadius="12" FontAttributes="Bold" />
+                <Button x:Name="Btn_ocultar" Text="Ocultar" Clicked="Btn_ocultar_Clicked" Margin="0,20,0,0" BorderRadius="12" FontAttributes="Bold" />
             </StackLayout>
-            <Button Text="Agregar" x:Name="BtnSavemateriales" Clicked="BtnSavemateriales_Clicked"/>
-           
-            <ListView x:Name="Lista_Materiales1" BackgroundColor="Gray">
+            <Button Text="Agregar" x:Name="BtnSavemateriales" Clicked="BtnSavemateriales_Clicked" Margin="0,0,0,20" BorderRadius="12" FontAttributes="Bold"/>
+
+            <ListView x:Name="Lista_Materiales1" BackgroundColor="#747B85" Opacity=".9">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                       

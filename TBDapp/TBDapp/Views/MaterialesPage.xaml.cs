@@ -12,12 +12,14 @@ namespace TBDapp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MaterialesPage : ContentPage
     {
-        
-       
+        public string backcolor { get; set; }
+
 
         public MaterialesPage()
         {
             InitializeComponent();
+            cargarlista();
+            backcolor = "#C9ACAC";
         }
 
         private async void Btn_agregar_material_Clicked(object sender, EventArgs e)
@@ -34,18 +36,15 @@ namespace TBDapp.Views
                 Entry_nombre.Text = "";
                 Entry_precio.Text = "";
                 await DisplayAlert("Registro", "Se guardo de manera exitosa", "ok");
-                var MaterialesList = await App.SQLiteDB.GetMateriales();
-                if (MaterialesList != null)
-                {
-                    Lista_Materiales1.ItemsSource = MaterialesList;
-                }
 
+                Lista_Materiales1.ItemsSource = null;
+                cargarlista();
                 SavematerialesLayout.IsVisible = false;
                 BtnSavemateriales.IsVisible = true;
             }
             else
             {
-                await DisplayAlert("Advertencia","Completa todos los campos","ok");
+                await DisplayAlert("Advertencia", "Completa todos los campos", "ok");
             }
         }
 
@@ -74,5 +73,22 @@ namespace TBDapp.Views
             BtnSavemateriales.IsVisible = false;
 
         }
+
+        private void Btn_ocultar_Clicked(object sender, EventArgs e)
+        {
+            SavematerialesLayout.IsVisible = false;
+            BtnSavemateriales.IsVisible = true;
+        }
+
+        public async void cargarlista()
+        {
+            var MaterialesList = await App.SQLiteDB.GetMateriales();
+            if (MaterialesList != null)
+            {
+                Lista_Materiales1.ItemsSource = MaterialesList;
+            }
+        }
+
+        
     }
 }

@@ -12,5 +12,15 @@ namespace TBDapp.Models
         public int id_cliente { get; set; }
         [MaxLength (50)]
         public string nombre_cliente { get; set; }
+        [MaxLength(50)]
+        public string Telefono_cliente { get; set; }
+        [MaxLength(50)]
+        public string Auto_cliente { get; set; }
+        [MaxLength(50)]
+        public string Servicio_cliente { get; set; }
+        [MaxLength(50)]
+        public string Fecha_entrada_cliente { get; set; }
+        [MaxLength(50)]
+        public string Fecha_salida_cliente { get; set; }
     }
 }

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TBDapp.ViewModels"
+             x:Class="TBDapp.Views.presupuestopage"
+             Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:PresupuestoViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem   />
+    </ContentPage.ToolbarItems>
+
+
+
+    <StackLayout Margin="10,20,10,20" >
+        <StackLayout x:Name="SaveclientesLayout" IsVisible="false" Margin="0,0,0,20">
+            <Entry x:Name="Entry_Cliente" Placeholder="Nombre del cliente" BackgroundColor="#747B85" Opacity=".8"/>
+            <Entry x:Name="Entry_Telefono" Placeholder="Telefono" BackgroundColor="#747B85" Opacity=".8"/>
+            <Entry x:Name="Entry_Autos" Placeholder="Modelo del auto" BackgroundColor="#747B85" Opacity=".8" />
+            <Entry x:Name="Entry_Servicio" Placeholder="Servicio" BackgroundColor="#747B85" Opacity=".8" />
+            <Entry x:Name="Entry_Fecha_entrada" Placeholder="Fecha de entrada" BackgroundColor="#747B85" Opacity=".8"/>
+            <Entry x:Name="Entry_Fecha_Salida" Placeholder="Fecha de salida" BackgroundColor="#747B85" Opacity=".8"/>
+            <Button x:Name="Btn_agregar_cliente" Text="Agregar" Clicked="Btn_agregar_cliente_Clicked" Margin="0,15
+                    ,0,20" BorderRadius="12" FontAttributes="Bold"/>
+            <Button x:Name="Btn_ocultar_cliente" Text="Ocultar" Clicked="Btn_ocultar_cliente_Clicked" Margin="0,0,0,20" BorderRadius="12" FontAttributes="Bold"/>
+        </StackLayout>
+        <Button Text="Agregar" x:Name="BtnSaveclientes" Clicked="BtnSaveclientes_Clicked" Margin="0,0,0,20" BorderRadius="12" FontAttributes="Bold" />
+
+        <ListView x:Name="Lista_Clientes" BackgroundColor="#747B85" Opacity=".9">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+
+                    <ViewCell>
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition  Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding id_cliente}" Grid.Row="0" Grid.Column="0" />
+                            <Label Text="{Binding nombre_cliente}" Grid.Row="0" Grid.Column="1" />
+                            <Label Text="{Binding Telefono_cliente}" Grid.Row="0" Grid.Column="2"/>
+                            <Label Text="{Binding Auto_cliente}" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="{Binding Fecha_entrada_cliente}" Grid.Row="1" Grid.Column="1" />
+                            <Label Text="{Binding Fecha_salida_cliente}" Grid.Row="1" Grid.Column="2"/>
+
+                        </Grid>
+
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+    </StackLayout>
+
+</ContentPage>

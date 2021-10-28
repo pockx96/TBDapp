@@ -18,6 +18,12 @@ namespace TBDapp.Models
 
         }
 
+        /// <summary>
+        /// Agrega Registros a la tabla materiales
+        /// </summary>
+        /// <param name="mat"></param>
+        /// <returns></returns>
+
         public Task<int> Savemateriales(Materiales mat)
         {
             if (mat.id_material==0)
@@ -40,9 +46,38 @@ namespace TBDapp.Models
             return bd.Table<Materiales>().ToListAsync();
         }
 
+        /// <summary>
+        /// Regresa la tabla materiales en base a su id
+        /// </summary>
+        /// <param name="idmaterial"></param>
+        /// <returns></returns>
+
         public Task<Materiales> GetMaterialesByid(int idmaterial)
         {
             return bd.Table<Materiales>().Where(a => a.id_material == idmaterial).FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Retorna toda la tabla Clientes
+        /// </summary>
+        /// <param name="client"></param>
+        /// <returns></returns>
+        public Task<int> SaveClientes(Clientes client)
+        {
+            if (client.id_cliente == 0)
+            {
+                return bd.InsertAsync(client);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public Task<List<Clientes>> GetClientes()
+        {
+            return bd.Table<Clientes>().ToListAsync();
         }
 
 
