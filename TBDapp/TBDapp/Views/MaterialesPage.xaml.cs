@@ -40,6 +40,8 @@ namespace TBDapp.Views
                     Lista_Materiales1.ItemsSource = MaterialesList;
                 }
 
+                SavematerialesLayout.IsVisible = false;
+                BtnSavemateriales.IsVisible = true;
             }
             else
             {
@@ -64,6 +66,13 @@ namespace TBDapp.Views
                 respuesta = true;
             }
             return respuesta;
+        }
+
+        private void BtnSavemateriales_Clicked(object sender, EventArgs e)
+        {
+            SavematerialesLayout.IsVisible = true;
+            BtnSavemateriales.IsVisible = false;
+
         }
     }
 }
