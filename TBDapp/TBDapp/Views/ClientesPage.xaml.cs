@@ -13,7 +13,7 @@ namespace TBDapp.Views
     public partial class presupuestopage : ContentPage
     {
 
-        public string backcolor { get; set; }
+
 
 
         public presupuestopage()
@@ -21,7 +21,6 @@ namespace TBDapp.Views
             InitializeComponent();
             BindingContext = new Materiales();
             CargarLista();
-            backcolor = "#C9ACAC";
 
         }
 
@@ -34,10 +33,10 @@ namespace TBDapp.Views
                     nombre_cliente = Entry_Cliente.Text,
                     Telefono_cliente = Entry_Telefono.Text,
                     Auto_cliente = Entry_Autos.Text,
-                    Servicio_cliente = Entry_Autos.Text,
+                    Servicio_cliente = Entry_Servicio.Text,
                     Fecha_entrada_cliente = Entry_Fecha_entrada.Text,
                     Fecha_salida_cliente = Entry_Fecha_Salida.Text
-                    
+                 
                 };
                 await App.SQLiteDB.SaveClientes(clientes);
 
