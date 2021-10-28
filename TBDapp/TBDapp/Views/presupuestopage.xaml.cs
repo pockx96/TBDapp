@@ -18,7 +18,17 @@ namespace TBDapp.Views
         {
             InitializeComponent();
             BindingContext = new Materiales();
-            
+            CargarLista();
+                           
+        }
+
+        public async void CargarLista()
+        {
+            var MaterialesList = await App.SQLiteDB.GetMateriales();
+            if (MaterialesList != null)
+            {
+                Lista_Materiales.ItemsSource = MaterialesList;
+            }
         }
     }
 }

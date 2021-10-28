@@ -16,7 +16,6 @@ namespace TBDapp.Models
             bd.CreateTableAsync<Materiales>().Wait();
             bd.CreateTableAsync<Clientes>().Wait();
 
-
         }
 
         public Task<int> Savemateriales(Materiales mat)
@@ -32,6 +31,21 @@ namespace TBDapp.Models
            
         }
 
-       
+        /// <summary>
+        /// Retorna toda la tabla de materiales
+        /// </summary>
+        /// <returns></returns>
+        public Task<List<Materiales>> GetMateriales()
+        {
+            return bd.Table<Materiales>().ToListAsync();
+        }
+
+        public Task<Materiales> GetMaterialesByid(int idmaterial)
+        {
+            return bd.Table<Materiales>().Where(a => a.id_material == idmaterial).FirstOrDefaultAsync();
+        }
+
+
+
     }
 }

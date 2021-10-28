@@ -15,7 +15,7 @@
 
     <Grid>
         <StackLayout>
-            <ListView>
+            <ListView x:Name="Lista_Materiales" BackgroundColor="Gray">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -34,6 +34,11 @@ namespace TBDapp.Views
                 Entry_nombre.Text = "";
                 Entry_precio.Text = "";
                 await DisplayAlert("Registro", "Se guardo de manera exitosa", "ok");
+                var MaterialesList = await App.SQLiteDB.GetMateriales();
+                if (MaterialesList != null)
+                {
+                    Lista_Materiales1.ItemsSource = MaterialesList;
+                }
 
             }
             else

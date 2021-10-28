@@ -6,12 +6,39 @@
              
     <ContentPage.Content>
 
-        <Grid>
-            <StackLayout Margin="20,50,20,30">
-                <Entry x:Name="Entry_nombre" Placeholder="Nombre del material" BackgroundColor="Gray"/>
-                <Entry x:Name="Entry_precio" Placeholder="Precio actual" BackgroundColor="Gray"/>
-                <Button x:Name="Btn_agregar_material" Text="Agregar" Clicked="Btn_agregar_material_Clicked" />
-            </StackLayout>
-        </Grid>
+        
+       <StackLayout >
+          <Entry x:Name="Entry_nombre" Placeholder="Nombre del material" BackgroundColor="Gray"/>
+          <Entry x:Name="Entry_precio" Placeholder="Precio actual" BackgroundColor="Gray"/>
+          <Button x:Name="Btn_agregar_material" Text="Agregar" Clicked="Btn_agregar_material_Clicked" />
+            <ListView x:Name="Lista_Materiales1" BackgroundColor="Gray">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition  Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding id_material}" Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding nombre_material}" Grid.Row="0" Grid.Column="1" />
+                                <Label Text="{Binding precio_material}" Grid.Row="0" Grid.Column="2"/>
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+        </StackLayout>
+       
     </ContentPage.Content>
 </ContentPage>
