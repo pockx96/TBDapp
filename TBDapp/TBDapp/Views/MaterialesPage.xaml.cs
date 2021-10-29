@@ -31,10 +31,9 @@ namespace TBDapp.Views
 
                 };
                 await App.SQLiteDB.Savemateriales(material);
-                Entry_nombre.Text = "";
-                Entry_precio.Text = "";
+                LimpiarCampos();
                 await DisplayAlert("Registro", "Se guardo de manera exitosa", "ok");
-
+                Entry_id.IsVisible = false;
                 Lista_Materiales1.ItemsSource = null;
                 cargarlista();
                 SavematerialesLayout.IsVisible = false;
@@ -72,6 +71,8 @@ namespace TBDapp.Views
         {
             SavematerialesLayout.IsVisible = false;
             BuscadorLayout.IsVisible = true;
+            LimpiarCampos();
+            cargarlista();
         }
 
         public async void cargarlista()
@@ -87,6 +88,8 @@ namespace TBDapp.Views
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             SavematerialesLayout.IsVisible = true;
+            Btn_actualizar_material.IsVisible = false;
+            Btn_agregar_material.IsVisible = true;
             BuscadorLayout.IsVisible = false;
         }
 
@@ -102,9 +105,7 @@ namespace TBDapp.Views
 
                 };
                 await App.SQLiteDB.Savemateriales(material);
-                Entry_id.Text = "";
-                Entry_nombre.Text = "";
-                Entry_precio.Text = "";
+                LimpiarCampos();
                 await DisplayAlert("Registro", "Se guardo de manera exitosa", "ok");
 
                 Lista_Materiales1.ItemsSource = null;
@@ -154,6 +155,13 @@ namespace TBDapp.Views
             {
                 cargarlista();
             }
+        }
+
+        public void LimpiarCampos()
+        {
+            Entry_id.Text = "";
+            Entry_nombre.Text = "";
+            Entry_precio.Text = "";
         }
     }
 }

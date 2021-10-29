@@ -107,6 +107,11 @@ namespace TBDapp.Models
             return bd.Table<Clientes>().Where(a => a.id_cliente == idclientes).FirstOrDefaultAsync();
         }
 
+        public Task<List<Clientes>> GetClientesByname(string nom_cliente)
+        {
+            return bd.Table<Clientes>().Where(a => a.nombre_cliente == nom_cliente).ToListAsync();
+        }
+
 
 
         /// <summary>

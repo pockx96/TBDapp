@@ -14,6 +14,12 @@
 
 
     <StackLayout Margin="10,20,10,20" >
+
+        <StackLayout x:Name="BuscadorLayout" >
+            <SearchBar x:Name="searchbar" Placeholder="Clientes.."/>
+            <Button x:Name="Btnbusqueda" Text="Busqueda" Margin="0,20,0,0" BorderRadius="12" FontAttributes="Bold" Clicked="Btnbusqueda_Clicked"/>
+        </StackLayout>
+        
         <StackLayout x:Name="SaveclientesLayout" IsVisible="false" Margin="0,0,0,20">
             <Entry x:Name="Entry_id" Placeholder="Nombre del cliente" BackgroundColor="#747B85" Opacity=".8" IsVisible="false" />
             <Entry x:Name="Entry_Cliente" Placeholder="Nombre del cliente" BackgroundColor="#747B85" Opacity=".8"/>

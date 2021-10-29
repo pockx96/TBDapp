@@ -40,17 +40,14 @@ namespace TBDapp.Views
                 };
                 await App.SQLiteDB.SaveClientes(clientes);
 
-                Entry_Cliente.Text = "";
-                Entry_Telefono.Text = "";
-                Entry_Servicio.Text = "";
-                Entry_Fecha_entrada.Text = "";
-                Entry_Fecha_Salida.Text = "";
+                LimpiarDatos();
                 await DisplayAlert("Registro", "Se guardo de manera exitosa", "ok");
 
                 Lista_Clientes.ItemsSource = null;
                 CargarLista();
 
                 SaveclientesLayout.IsVisible = false;
+                BuscadorLayout.IsVisible = true;
 
             }
             else
@@ -107,12 +104,16 @@ namespace TBDapp.Views
         private void Btn_ocultar_cliente_Clicked(object sender, EventArgs e)
         {
             SaveclientesLayout.IsVisible = false;
+            BuscadorLayout.IsVisible = true;
+            CargarLista();
+            LimpiarDatos();
         }
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             SaveclientesLayout.IsVisible = true;
             Entry_id.IsVisible = false;
+            BuscadorLayout.IsVisible = false;
 
         }
 
@@ -131,13 +132,7 @@ namespace TBDapp.Views
                     Fecha_salida_cliente = Entry_Fecha_Salida.Text
                 };
                 await App.SQLiteDB.SaveClientes(clientes);
-                Entry_id.Text = "";
-                Entry_Cliente.Text = "";
-                Entry_Telefono.Text = "";
-                Entry_Autos.Text = "";
-                Entry_Servicio.Text = "";
-                Entry_Fecha_entrada.Text = "";
-                Entry_Fecha_Salida.Text = "";
+                LimpiarDatos();
                 await DisplayAlert("Registro", "Se guardo de manera exitosa", "ok");
 
                 Lista_Clientes.ItemsSource = null;
@@ -145,6 +140,7 @@ namespace TBDapp.Views
                 SaveclientesLayout.IsVisible = false;
                 Btn_actualizar_cliente.IsVisible = false;
                 Entry_id.IsVisible = false;
+                BuscadorLayout.IsVisible = true;
             }
 
         }
@@ -155,6 +151,7 @@ namespace TBDapp.Views
             SaveclientesLayout.IsVisible = true;
             Btn_agregar_cliente.IsVisible = false;
             Btn_actualizar_cliente.IsVisible = true;
+            BuscadorLayout.IsVisible = false;
 
             var obj = (Clientes)e.SelectedItem;
             if (!string.IsNullOrEmpty(obj.id_cliente.ToString()))
@@ -172,6 +169,38 @@ namespace TBDapp.Views
                 }
 
             }
+            
+        }
+
+        private async void Btnbusqueda_Clicked(object sender, EventArgs e)
+        {
+            Clientes obj = new Clientes()
+            {
+                nombre_cliente = searchbar.Text
+            };
+
+            var materiales = await App.SQLiteDB.GetClientesByname(obj.nombre_cliente);
+            if (!string.IsNullOrEmpty(searchbar.Text))
+            {
+                Lista_Clientes.ItemsSource = materiales;
+
+            }
+            else
+            {
+                CargarLista();
+            }
+
+        }
+
+        public void LimpiarDatos()
+        {
+            Entry_id.Text = "";
+            Entry_Cliente.Text = "";
+            Entry_Autos.Text = "";
+            Entry_Telefono.Text = "";
+            Entry_Servicio.Text = "";
+            Entry_Fecha_entrada.Text = "";
+            Entry_Fecha_Salida.Text = "";
         }
     }
 }

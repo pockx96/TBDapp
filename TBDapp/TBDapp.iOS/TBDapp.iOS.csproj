@@ -166,4 +166,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\instagram.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clasic_logo_bar.png" />
+  </ItemGroup>
 </Project>
