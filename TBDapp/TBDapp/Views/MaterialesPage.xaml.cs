@@ -38,6 +38,7 @@ namespace TBDapp.Views
                 Lista_Materiales1.ItemsSource = null;
                 cargarlista();
                 SavematerialesLayout.IsVisible = false;
+                BuscadorLayout.IsVisible = true;
 
             }
             else
@@ -70,7 +71,7 @@ namespace TBDapp.Views
         private void Btn_ocultar_Clicked(object sender, EventArgs e)
         {
             SavematerialesLayout.IsVisible = false;
-            bucadormaterialesLayout.IsVisible = true;
+            BuscadorLayout.IsVisible = true;
         }
 
         public async void cargarlista()
@@ -82,29 +83,11 @@ namespace TBDapp.Views
             }
         }
 
-        private async void Btbuscador__materiales_Clicked(object sender, EventArgs e)
-        {
-            
-            if (String.IsNullOrEmpty(Entry_buscador_materiales.Text))
-            {
-                await DisplayAlert("Advertencia", "complete los campos", "ok");
-            }
-            else
-            {
-                var MaterialesList = (System.Collections.IEnumerable)await App.SQLiteDB.GetMaterialesByid(Convert.ToInt32(Entry_buscador_materiales.Text));
-                if (MaterialesList != null)
-                {
-                    Lista_Materiales1.ItemsSource = null;
-                    Lista_Materiales1.ItemsSource = MaterialesList;
-                }
-
-            }
-        }
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
             SavematerialesLayout.IsVisible = true;
-            bucadormaterialesLayout.IsVisible = false;
+            BuscadorLayout.IsVisible = false;
         }
 
         private async void Btn_actualizar_material_Clicked(object sender, EventArgs e)
@@ -128,12 +111,14 @@ namespace TBDapp.Views
                 cargarlista();
                 SavematerialesLayout.IsVisible = false;
                 Btn_actualizar_material.IsVisible = false;
+                BuscadorLayout.IsVisible = true;
             }
 
         }
 
         private async void Lista_Materiales1_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            BuscadorLayout.IsVisible = false;
             Entry_id.IsVisible = true;
             SavematerialesLayout.IsVisible = true;
             Btn_agregar_material.IsVisible = false;
@@ -149,6 +134,25 @@ namespace TBDapp.Views
                     Entry_precio.Text = materiales.precio_material;
                 }
                 
+            }
+        }
+
+        private async  void Btnbusqueda_Clicked(object sender, EventArgs e)
+        {
+            Materiales obj = new Materiales()
+            {
+                nombre_material = searchbar.Text
+            };
+
+            var materiales = await App.SQLiteDB.GetMaterialesByname(obj.nombre_material);
+            if (!string.IsNullOrEmpty(searchbar.Text))
+            {
+                Lista_Materiales1.ItemsSource = materiales;
+
+            }
+            else
+            {
+                cargarlista();
             }
         }
     }

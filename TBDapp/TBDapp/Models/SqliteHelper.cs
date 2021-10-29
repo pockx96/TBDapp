@@ -49,6 +49,16 @@ namespace TBDapp.Models
         }
 
         /// <summary>
+        /// Regresa todos los registros que coinsidan con el nombre
+        /// </summary>
+        /// <param name="nom_material"></param>
+        /// <returns></returns>
+        public Task<List<Materiales>> GetMaterialesByname(string nom_material)
+        {
+            return bd.Table<Materiales>().Where(a => a.nombre_material==nom_material).ToListAsync();
+        }
+
+        /// <summary>
         /// Regresa la tabla materiales en base a su id
         /// </summary>
         /// <param name="idmaterial"></param>
@@ -59,15 +69,7 @@ namespace TBDapp.Models
             return bd.Table<Materiales>().Where(a => a.id_material == idmaterial).FirstOrDefaultAsync();
         }
 
-        /// <summary>
-        /// Devuelve todas los registros de materiales que coinsidan con el nombre
-        /// </summary>
-        /// <param name="materiales"></param>
-        /// <returns></returns>
-        public Task<Materiales> GetMaterialesByname(Materiales materiales)
-        {
-            return bd.Table<Materiales>().Where(a => a.nombre_material == materiales.nombre_material).FirstOrDefaultAsync();
-        }
+     
 
         /// <summary>
         /// Retorna toda la tabla Clientes
@@ -104,6 +106,7 @@ namespace TBDapp.Models
         {
             return bd.Table<Clientes>().Where(a => a.id_cliente == idclientes).FirstOrDefaultAsync();
         }
+
 
 
         /// <summary>

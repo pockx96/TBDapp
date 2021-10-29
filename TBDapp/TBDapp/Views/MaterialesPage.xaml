@@ -2,16 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TBDapp.Views.MaterialesPage"
-             Title="Agrega un nuevo material">
+             >
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ToolBtnAgregar" Text="Agregar" Clicked="ToolbarItem_Clicked" />
+        
     </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-       
 
 
         <StackLayout Margin="10,20,10,20" >
-            
+
+            <StackLayout x:Name="BuscadorLayout" >
+                <SearchBar x:Name="searchbar" Placeholder="Material.."/>
+                <Button x:Name="Btnbusqueda" Text="Busqueda" Margin="0,20,0,0" BorderRadius="12" FontAttributes="Bold" Clicked="Btnbusqueda_Clicked"/>
+            </StackLayout>
             <StackLayout x:Name="SavematerialesLayout" IsVisible="false" Margin="0,0,0,20">
                 <Entry x:Name="Entry_id" Placeholder="Nombre del material" BackgroundColor="#747B85" Opacity=".8" IsVisible="false" />
                 <Entry x:Name="Entry_nombre" Placeholder="Nombre del material" BackgroundColor="#747B85" Opacity=".8" />
@@ -21,12 +26,7 @@
                 <Button x:Name="Btn_ocultar" Text="Ocultar" Clicked="Btn_ocultar_Clicked" Margin="0,20,0,0" BorderRadius="12" FontAttributes="Bold" />
             </StackLayout>
 
-            <StackLayout x:Name="bucadormaterialesLayout">
-                
-                <Entry x:Name="Entry_buscador_materiales" Placeholder="Busque su material" BackgroundColor="#747B85" Opacity=".8" IsVisible="false" />
-                <Button Text="Buscar" x:Name="Btbuscador__materiales" Clicked="Btbuscador__materiales_Clicked" Margin="0,0,0,20" BorderRadius="12" FontAttributes="Bold" IsVisible="False"/>
-            </StackLayout>
-            <ListView x:Name="Lista_Materiales1" BackgroundColor="#747B85" Opacity=".9" ItemSelected="Lista_Materiales1_ItemSelected">
+            <ListView x:Name="Lista_Materiales1" BackgroundColor="#747B85" Opacity=".9" ItemSelected="Lista_Materiales1_ItemSelected" Margin="0,10,0,10">
                     <ListView.ItemTemplate>
                         <DataTemplate>
 
