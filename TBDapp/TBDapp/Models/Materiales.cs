@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using SQLite;
 
+
 namespace TBDapp.Models
 {
     [Table("mat")]
-    public class Materiales
+    public class Materiales 
     {
         [PrimaryKey, AutoIncrement]
         public int id_material { get; set; }

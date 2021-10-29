@@ -10,6 +10,7 @@ namespace TBDapp.Models
     {
         SQLiteAsyncConnection bd;
 
+
         public SqliteHelper(string bdpath)
         {
             bd = new SQLiteAsyncConnection(bdpath);
@@ -27,13 +28,13 @@ namespace TBDapp.Models
 
         public Task<int> Savemateriales(Materiales mat)
         {
-            if (mat.id_material==0)
+            if (mat.id_material!=0)
             {
-                return bd.InsertAsync(mat);
+                return bd.UpdateAsync(mat);
             }
             else
             {
-                return null;
+                return bd.InsertAsync(mat);
             }
            
         }
@@ -56,6 +57,10 @@ namespace TBDapp.Models
         public Task<Materiales> GetMaterialesByid(int idmaterial)
         {
             return bd.Table<Materiales>().Where(a => a.id_material == idmaterial).FirstOrDefaultAsync();
+        }
+        public Task<Materiales> GetMaterialesByname(Materiales materiales)
+        {
+            return bd.Table<Materiales>().Where(a => a.nombre_material == materiales.nombre_material).FirstOrDefaultAsync();
         }
 
         /// <summary>
