@@ -3,31 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:TBDapp.ViewModels"
              x:Class="TBDapp.Views.presupuestopage"
-             Title="{Binding Title}">
+             Title="Clientes">
     <ContentPage.BindingContext>
         <vm:PresupuestoViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem  />
+        <ToolbarItem  Text="Nuevo cliente" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>
 
 
 
     <StackLayout Margin="10,20,10,20" >
         <StackLayout x:Name="SaveclientesLayout" IsVisible="false" Margin="0,0,0,20">
+            <Entry x:Name="Entry_id" Placeholder="Nombre del cliente" BackgroundColor="#747B85" Opacity=".8" IsVisible="false" />
             <Entry x:Name="Entry_Cliente" Placeholder="Nombre del cliente" BackgroundColor="#747B85" Opacity=".8"/>
             <Entry x:Name="Entry_Telefono" Placeholder="Telefono" BackgroundColor="#747B85" Opacity=".8"/>
             <Entry x:Name="Entry_Autos" Placeholder="Modelo del auto" BackgroundColor="#747B85" Opacity=".8" />
             <Entry x:Name="Entry_Servicio" Placeholder="Servicio" BackgroundColor="#747B85" Opacity=".8" />
             <Entry x:Name="Entry_Fecha_entrada" Placeholder="Fecha de entrada" BackgroundColor="#747B85" Opacity=".8"/>
             <Entry x:Name="Entry_Fecha_Salida" Placeholder="Fecha de salida" BackgroundColor="#747B85" Opacity=".8"/>
-            <Button x:Name="Btn_agregar_cliente" Text="Agregar" Clicked="Btn_agregar_cliente_Clicked" Margin="0,15
-                    ,0,20" BorderRadius="12" FontAttributes="Bold"/>
+            <Button x:Name="Btn_agregar_cliente" Text="Agregar" Clicked="Btn_agregar_cliente_Clicked" Margin="0,15 ,0,20" BorderRadius="12" FontAttributes="Bold"/>
+            <Button x:Name="Btn_actualizar_cliente" Text="Actualizar" Clicked="Btn_actualizar_cliente_Clicked" Margin="0,15 ,0,20" BorderRadius="12" FontAttributes="Bold" IsVisible="false"/>
             <Button x:Name="Btn_ocultar_cliente" Text="Ocultar" Clicked="Btn_ocultar_cliente_Clicked" Margin="0,0,0,20" BorderRadius="12" FontAttributes="Bold"/>
         </StackLayout>
-        <Button Text="Agregar" x:Name="BtnSaveclientes" Clicked="BtnSaveclientes_Clicked" Margin="0,0,0,20" BorderRadius="12" FontAttributes="Bold" />
 
-        <ListView x:Name="Lista_Clientes" BackgroundColor="#747B85" Opacity=".9">
+        <ListView x:Name="Lista_Clientes" BackgroundColor="#747B85" Opacity=".9" ItemSelected="Lista_Clientes_ItemSelected">
             <ListView.ItemTemplate>
                 <DataTemplate>
 
@@ -50,7 +50,8 @@
                             <Label Text="{Binding id_cliente}" Grid.Row="0" Grid.Column="0" />
                             <Label Text="{Binding nombre_cliente}" Grid.Row="0" Grid.Column="1" />
                             <Label Text="{Binding Telefono_cliente}" Grid.Row="0" Grid.Column="2"/>
-                            <Label Text="{Binding Auto_cliente}" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="{Binding Auto_cliente}" Grid.Row="0" Grid.Column="3" TextColor="Orange" />
+                            <Label Text="{Binding Servicio_cliente}" Grid.Row="1" Grid.Column="0" />
                             <Label Text="{Binding Fecha_entrada_cliente}" Grid.Row="1" Grid.Column="1" />
                             <Label Text="{Binding Fecha_salida_cliente}" Grid.Row="1" Grid.Column="2"/>
 

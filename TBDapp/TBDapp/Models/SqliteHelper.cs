@@ -58,6 +58,12 @@ namespace TBDapp.Models
         {
             return bd.Table<Materiales>().Where(a => a.id_material == idmaterial).FirstOrDefaultAsync();
         }
+
+        /// <summary>
+        /// Devuelve todas los registros de materiales que coinsidan con el nombre
+        /// </summary>
+        /// <param name="materiales"></param>
+        /// <returns></returns>
         public Task<Materiales> GetMaterialesByname(Materiales materiales)
         {
             return bd.Table<Materiales>().Where(a => a.nombre_material == materiales.nombre_material).FirstOrDefaultAsync();
@@ -70,22 +76,41 @@ namespace TBDapp.Models
         /// <returns></returns>
         public Task<int> SaveClientes(Clientes client)
         {
-            if (client.id_cliente == 0)
+            if (client.id_cliente != 0)
             {
-                return bd.InsertAsync(client);
+                return bd.UpdateAsync(client);
             }
             else
             {
-                return null;
+                return bd.InsertAsync(client);
             }
 
         }
-
+        /// <summary>
+        /// optiene todos los registros de la tabla clientes
+        /// </summary>
+        /// <returns></returns>
         public Task<List<Clientes>> GetClientes()
         {
             return bd.Table<Clientes>().ToListAsync();
         }
 
+        /// <summary>
+        /// Devuelve todos los registros que coincidan con el id
+        /// </summary>
+        /// <param name="idclientes"></param>
+        /// <returns></returns>
+        public Task<Clientes> GetClientesByid(int idclientes)
+        {
+            return bd.Table<Clientes>().Where(a => a.id_cliente == idclientes).FirstOrDefaultAsync();
+        }
+
+
+        /// <summary>
+        /// almacena todos los registros de la tabla Usuarios
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public Task<int> SaveUsuarios(Usuarios user)
         {
             if (user.id_usuario==0)

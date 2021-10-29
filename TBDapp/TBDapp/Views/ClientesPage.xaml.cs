@@ -51,7 +51,7 @@ namespace TBDapp.Views
                 CargarLista();
 
                 SaveclientesLayout.IsVisible = false;
-                BtnSaveclientes.IsVisible = true;
+
             }
             else
             {
@@ -103,18 +103,75 @@ namespace TBDapp.Views
             }
         }
 
-        private void BtnSaveclientes_Clicked(object sender, EventArgs e)
-        {
-            BtnSaveclientes.IsVisible = false;
-            SaveclientesLayout.IsVisible = true;
-
-
-        }
 
         private void Btn_ocultar_cliente_Clicked(object sender, EventArgs e)
         {
             SaveclientesLayout.IsVisible = false;
-            BtnSaveclientes.IsVisible = true;
+        }
+
+        private void ToolbarItem_Clicked(object sender, EventArgs e)
+        {
+            SaveclientesLayout.IsVisible = true;
+            Entry_id.IsVisible = false;
+
+        }
+
+        private async void Btn_actualizar_cliente_Clicked(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Entry_id.Text))
+            {
+                Clientes clientes = new Clientes()
+                {
+                    id_cliente = Convert.ToInt32(Entry_id.Text),
+                    nombre_cliente = Entry_Cliente.Text,
+                    Auto_cliente = Entry_Autos.Text,
+                    Telefono_cliente = Entry_Telefono.Text,
+                    Servicio_cliente = Entry_Servicio.Text,
+                    Fecha_entrada_cliente = Entry_Fecha_entrada.Text,
+                    Fecha_salida_cliente = Entry_Fecha_Salida.Text
+                };
+                await App.SQLiteDB.SaveClientes(clientes);
+                Entry_id.Text = "";
+                Entry_Cliente.Text = "";
+                Entry_Telefono.Text = "";
+                Entry_Autos.Text = "";
+                Entry_Servicio.Text = "";
+                Entry_Fecha_entrada.Text = "";
+                Entry_Fecha_Salida.Text = "";
+                await DisplayAlert("Registro", "Se guardo de manera exitosa", "ok");
+
+                Lista_Clientes.ItemsSource = null;
+                CargarLista();
+                SaveclientesLayout.IsVisible = false;
+                Btn_actualizar_cliente.IsVisible = false;
+                Entry_id.IsVisible = false;
+            }
+
+        }
+
+        private async void Lista_Clientes_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Entry_id.IsVisible = true;
+            SaveclientesLayout.IsVisible = true;
+            Btn_agregar_cliente.IsVisible = false;
+            Btn_actualizar_cliente.IsVisible = true;
+
+            var obj = (Clientes)e.SelectedItem;
+            if (!string.IsNullOrEmpty(obj.id_cliente.ToString()))
+            {
+                var clientes = await App.SQLiteDB.GetClientesByid(obj.id_cliente);
+                if (clientes != null)
+                {
+                    Entry_id.Text = Convert.ToString(clientes.id_cliente);
+                    Entry_Cliente.Text = clientes.nombre_cliente;
+                    Entry_Autos.Text = clientes.Auto_cliente;
+                    Entry_Telefono.Text = clientes.Telefono_cliente;
+                    Entry_Servicio.Text = clientes.Servicio_cliente;
+                    Entry_Fecha_entrada.Text = clientes.Fecha_entrada_cliente;
+                    Entry_Fecha_Salida.Text = clientes.Fecha_salida_cliente;
+                }
+
+            }
         }
     }
 }
